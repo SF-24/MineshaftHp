@@ -1,0 +1,29 @@
+name: MineshaftHp
+version: '1.0'
+main: com.mineshaft.mineshaftHp.MineshaftHp
+api-version: '1.21'
+prefix: [ MineshaftHp ]
+authors: [ Mineshaft ]
+depend:
+  - MineshaftApi
+description: A neoforge api
+website: github.com/SF-24
+commands:
+  house_points:
+    aliases: [ house_point, hp ]
+    permission: mineshafthp.house_points
+  set_house:
+    aliases: [ hp_house ]
+    permission: mineshafthp.house.sort
+permissions:
+  mineshafthp.house_points.query:
+    default: true
+  mineshafthp.house_points.add:
+    default: op
+  mineshafthp.house_points.remove:
+    default: op
+  mineshafthp.house_points.set:
+    default: op
+  mineshafthp.house.sort:
+    default: op
+
