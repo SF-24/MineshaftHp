@@ -2,15 +2,23 @@ package com.mineshaft.mineshaftHp.data;
 
 import com.mineshaft.mineshaftHp.House;
 import com.mineshaft.mineshaftapi.MineshaftApi;
-import com.mineshaft.mineshaftapi.manager.player.json.JsonSaveLoader;
-import com.mineshaft.mineshaftapi.manager.player.json.SettingsDataClass;
 import com.mineshaft.mineshaftapi.util.save_data.GenericJsonManager;
-import com.mineshaft.mineshaftapi.util.save_data.GenericJsonSaveLoader;
-import org.bukkit.entity.Player;
+import lombok.Getter;
+
+import java.util.Comparator;
+import java.util.HashMap;
 
 public class JsonHousePointManager extends GenericJsonManager {
 
     // Overridden methods in the abstract parent class
+
+    @Getter
+    protected Comparator<House> housePointComparator = new Comparator<>() {
+        @Override
+        public int compare(House o1, House o2) {
+            return getHousePoints(o1) - getHousePoints(o2);
+        }
+    };
 
     @Override
     public Class<?> getSaveClass() {
@@ -34,8 +42,18 @@ public class JsonHousePointManager extends GenericJsonManager {
         saveFile(data);
     }
 
+    public void addHousePoints(House house, int points) {
+        if(getHousePoints(house)+points>=0) {
+            setHousePoints(house, getHousePoints(house) + points);
+        }
+    }
+
     // Loads data
     public int getHousePoints(House house) {
         return ((JsonHousePointClass) getData()).getHousePoints(house);
+    }
+
+    public HashMap<House, Integer> getHousePoints() {
+        return ((JsonHousePointClass) getData()).getHousePoints();
     }
 }

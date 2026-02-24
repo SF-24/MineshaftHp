@@ -17,6 +17,7 @@ public final class MineshaftHp extends JavaPlugin {
     @Override
     public void onEnable() {
         Logger.logInfo(
+                "\n" +
                 "_  _ _ _  _ ____ ____ _  _ ____ ____ ___    _  _ ___ \n" +
                 "|\\/| | |\\ | |___ [__  |__| |__| |___  |     |__| |__]\n" +
                 "|  | | | \\| |___ ___] |  | |  | |     |     |  | |   "

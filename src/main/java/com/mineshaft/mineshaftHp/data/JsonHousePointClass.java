@@ -2,11 +2,13 @@ package com.mineshaft.mineshaftHp.data;
 
 import com.mineshaft.mineshaftHp.House;
 import com.mineshaft.mineshaftapi.manager.player.json.JsonSaveObject;
+import lombok.Getter;
 
 import java.util.HashMap;
 
 public class JsonHousePointClass extends JsonSaveObject {
 
+    @Getter
     protected HashMap<House, Integer> housePoints = new HashMap<>();
 
     public JsonHousePointClass() {
@@ -25,4 +27,5 @@ public class JsonHousePointClass extends JsonSaveObject {
         if(house==House.NONE||!housePoints.containsKey(house)) return 0;
         return housePoints.get(house);
     }
+
 }
